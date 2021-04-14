@@ -1,15 +1,12 @@
 import Head from "next/head";
-import { Heading } from "rebass";
 
-export default function Home() {
-  return (
-    <div>
-      <Head>
-        <title>Buldidé</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+const Home = () => (
+  <>
+    <Head>
+      <title>Buldidé | Accueil</title>
+    </Head>
+    <h1>Accueil</h1>
+  </>
+);
 
-      <Heading as="h1">Hello world</Heading>
-    </div>
-  );
-}
+export default Home;
