@@ -1,0 +1,23 @@
+@layer base {
+  @font-face {
+    font-family: "Heebo", sans-serif;
+    font-weight: 400;
+    src: url(/fonts/heebo/Heebo-Regular.tff) format("truetype");
+  }
+
+  @font-face {
+    font-family: "Heebo", sans-serif;
+    font-weight: 700;
+    src: url(/fonts/heebo/Heebo-Bold.tff) format("truetype");
+  }
+
+  @font-face {
+    font-family: "Heebo", sans-serif;
+    font-weight: 900;
+    src: url(/fonts/heebo/Heebo-Black.tff) format("truetype");
+  }
+
+  :root {
+    @apply font-body;
+  }
+}
