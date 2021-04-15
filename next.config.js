@@ -5,6 +5,7 @@ module.exports = {
       "@components": "components",
       "@config": "app.config",
       "@layouts": "components/@layouts",
+      "@models": "models",
       "@middlewares": "middlewares",
       "@ui": "components/@ui",
       "@utils": "utils",
