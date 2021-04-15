@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { SITE_NAME } from "@config";
 
 const Header = () => (
   <header className="fixed top-0 w-full bg-black text-white z-10">
     <div className="_container py-4 flex justify-between items-center">
       <Link href="/">
-        <div>Buldidé</div>
+        <div>{SITE_NAME}</div>
       </Link>
       <div>
         <Link href="/login">
