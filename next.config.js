@@ -4,7 +4,7 @@ module.exports = {
       ...config.resolve.alias,
       "@components": "components",
       "@layouts": "components/@layouts",
-      "@ui": "component/@ui",
+      "@ui": "components/@ui",
     };
     return config;
   },

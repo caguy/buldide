@@ -1,0 +1,17 @@
+@layer components {
+  ._field {
+    @apply my-6;
+  }
+
+  ._label {
+    @apply block font-bold mt-4 mb-2;
+  }
+
+  ._input {
+    @apply w-full bg-white rounded px-4 py-2 border border-gray-600  hover:border-primary focus:border-primary focus:border-2 outline-none;
+  }
+
+  ._input:focus {
+    margin: -1px;
+  }
+}
