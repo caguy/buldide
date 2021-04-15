@@ -1,5 +1,5 @@
 @layer base {
   h1 {
-    @apply text-4xl mt-3 mb-2 font-black;
+    @apply text-4xl mt-4 mb-2 font-black;
   }
 }

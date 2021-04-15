@@ -1,6 +1,6 @@
 @layer components {
   .btn-base {
-    @apply border border-primary px-4 py-2 rounded-md font-bold text-sm;
+    @apply border border-primary px-6 py-2 rounded-md font-bold text-sm;
   }
 
   /* Cannot be nested using &, otherwise it will be purged */
