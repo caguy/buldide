@@ -9,6 +9,7 @@
     "debug": "NODE_OPTIONS='--inspect' next dev"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cookie": "^0.4.1",
     "formik": "^2.2.6",
     "helmet": "^4.4.1",
