@@ -8,7 +8,7 @@ const SiteLayout = ({ children }) => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Header />
-    <main className="ctn pt-16">{children}</main>
+    <main className="ctn relative top-5">{children}</main>
   </>
 );
 

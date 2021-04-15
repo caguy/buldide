@@ -1,9 +1,16 @@
 @layer components {
-  .btn {
-    @apply px-6 py-2 rounded-md bg-primary text-white font-bold hover:bg-primary-light;
+  .btn-base {
+    @apply border border-primary px-4 py-2 rounded-md font-bold text-sm;
+  }
 
-    &.secondary {
-      @apply text-primary bg-white;
-    }
+  /* Cannot be nested using &, otherwise it will be purged */
+
+  .btn,
+  .btn-primary {
+    @apply btn-base bg-primary hover:bg-primary-dark text-white;
+  }
+
+  .btn-secondary {
+    @apply btn-base text-primary hover:bg-primary-light bg-white;
   }
 }

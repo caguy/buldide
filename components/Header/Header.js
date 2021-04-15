@@ -1,8 +1,19 @@
+import Link from "next/link";
+
 const Header = () => (
-  <header className="fixed w-full bg-black text-white z-10">
+  <header className="fixed top-0 w-full bg-black text-white z-10">
     <div className="ctn py-3 flex justify-between items-center">
-      <div>Buldidé</div>
-      <button className="btn">Se connecter</button>
+      <Link href="/">
+        <div>Buldidé</div>
+      </Link>
+      <div>
+        <Link href="/login">
+          <button className="btn-secondary">Se connecter</button>
+        </Link>
+        <Link href="/inscription">
+          <button className="btn-primary ml-3">S'inscrire</button>
+        </Link>
+      </div>
     </div>
   </header>
 );
