@@ -1,6 +1,6 @@
-import { LOGIN } from "./actionsTypes";
+import { LOGIN, LOGOUT } from "./actionTypes";
 
-export default (state, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case LOGIN:
       return { ...state, isLoggedIn: true };
@@ -10,3 +10,5 @@ export default (state, action) => {
       throw new Error("Invalid action type");
   }
 };
+
+export default reducer;

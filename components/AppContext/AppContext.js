@@ -1,4 +1,5 @@
 import React from "react";
-import initialState from "./lib/initialState";
 
-export default React.createContext(initialState);
+const AppContext = React.createContext();
+
+export default AppContext;

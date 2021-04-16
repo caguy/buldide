@@ -1,6 +1,3 @@
-import AppContext from "./AppContext";
-
-export default AppContext;
-export * from "./lib/actionsTypes";
-export { default as reducer } from "./lib/reducer";
-export { default as initialState } from "./lib/initialState";
+export { default as AppContextProvider } from "./AppContextProvider";
+export { default as useAppContext } from "./useAppContext";
+export * from "./lib/actionTypes";
