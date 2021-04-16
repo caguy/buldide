@@ -4,4 +4,5 @@ module.exports = {
   JWT_KEY: process.env.JWT_KEY || "s3cr3t",
   JWT_VALIDITY: "24h",
   MONGO_DB_URI: process.env.MONGO_DB_URI,
+  API_URL: "/api/v1",
 };

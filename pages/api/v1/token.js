@@ -31,15 +31,12 @@ handler.post(async (req, res, next) => {
 
         res._cookie(JWT_ACCESS_TOKEN_NAME, accessToken, { httpOnly: true });
 
-        return res.status(201).json({
-          success: true,
-          token: accessToken,
-        });
+        return res.status(201).json(payload);
       }
     }
     return res._reject(
       401,
-      "Identification failed for the given username and password"
+      "Aucun compte associé à ce nom d'utilisateur et ce mot de passe"
     );
   } catch (err) {
     return next(err);

@@ -11,6 +11,11 @@ module.exports = {
       light: "#EFEBFF",
       transparent: "rgba(118, 85, 254, 0.2)",
     },
+    error: {
+      DEFAULT: colors.red[500],
+      light: colors.red[100],
+      dark: colors.red[900],
+    },
   },
   fontFamily: {
     body: ["Heebo", "Roboto", "sans-serif"],

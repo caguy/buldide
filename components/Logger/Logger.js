@@ -1,19 +1,29 @@
 import Input from "@ui/Input";
 import { Formik, Form } from "formik";
+import * as Yup from "yup";
+import useLogger from "./hooks/useLogger";
 
 const Logger = () => {
-  const submitHandler = async (values) => {
-    await new Promise((resolve, reject) => setTimeout(() => resolve(), 2000));
-    alert(JSON.stringify(values));
-  };
+  const { login, message } = useLogger();
 
   return (
     <Formik
       initialValues={{ username: "", password: "" }}
-      onSubmit={submitHandler}
+      onSubmit={login}
+      validationSchema={Yup.object().shape({
+        username: Yup.string().required(
+          "Veuillez saisir votre nom d'utilisateur"
+        ),
+        password: Yup.string().required("Veuillez saisir votre mot de passe"),
+      })}
     >
       {(formik) => (
         <Form method="POST" action="/api/v1/token" className="max-w-lg">
+          {message && (
+            <div className="_alert_error" aria-live="assertive">
+              {message}
+            </div>
+          )}
           <Input
             type="text"
             id="username"

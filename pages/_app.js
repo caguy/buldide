@@ -1,5 +1,5 @@
 import { SiteLayout } from "@layouts";
-import { AppContextProvider } from "@components/AppContext";
+import { AppContextProvider } from "@context";
 import "styles/globals.css";
 
 function MyApp({ Component, pageProps }) {

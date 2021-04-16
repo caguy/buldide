@@ -8,9 +8,15 @@ export default function Input({ label, ...props }) {
       <label htmlFor={props.id} className="_label">
         {label}
       </label>
-      <input {...field} {...props} className="_input" />
+      <input
+        {...field}
+        {...props}
+        className={`_input ${
+          meta.error && meta.touched ? "border-error border-2" : ""
+        }`}
+      />
       {meta.touched && meta.error ? (
-        <div className="_field-error">{meta.error}</div>
+        <div className="text-error text-sm mt-2">{meta.error}</div>
       ) : null}
     </div>
   );

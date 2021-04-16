@@ -1,0 +1,9 @@
+@layer components {
+  ._alert {
+    @apply py-4 px-4 text-sm;
+  }
+
+  ._alert_error {
+    @apply _alert bg-error-light border-l-4 border-error text-error-dark;
+  }
+}
