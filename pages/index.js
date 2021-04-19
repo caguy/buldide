@@ -3,7 +3,7 @@ import Head from "next/head";
 import { SITE_NAME } from "@config";
 
 const Home = () => {
-  const [session, loading] = useSession();
+  const [session] = useSession();
 
   return (
     <>
