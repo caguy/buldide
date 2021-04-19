@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ConnexionButton } from "./components";
+import { ConnexionButton, SearchIcon } from "./components";
 import { SITE_NAME } from "@config";
 
 const Header = () => {
@@ -14,7 +14,24 @@ const Header = () => {
       </div>
 
       <div className="_container _panel-content flex justify-between items-center">
-        <div id="searchbar"></div>
+        <div id="searchbar" className="relative">
+          <input
+            type="text"
+            placeholder="Rechercher..."
+            className="bg-black-light pt-1 leading-6 pl-8 pr-4 text-sm rounded-md border border-white border-opacity-10 hover:border-opacity-40 text-white"
+            style={{ width: "24em" }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: 6,
+              left: 6,
+              transform: "scale(0.8)",
+            }}
+          >
+            <SearchIcon />
+          </div>
+        </div>
         <div id="connexion">
           <ConnexionButton />
         </div>

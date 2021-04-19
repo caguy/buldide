@@ -2,7 +2,7 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   colors: {
-    black: "#06040D",
+    black: { DEFAULT: "#06040D", light: "#101010" },
     gray: colors.blueGray,
     white: "white",
     primary: {
@@ -46,6 +46,7 @@ module.exports = {
   },
   opacity: {
     0: "0",
+    10: ".1",
     40: ".4",
     80: ".8",
   },
