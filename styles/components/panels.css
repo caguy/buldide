@@ -1,0 +1,10 @@
+@layer components {
+  ._panel-menu {
+    @apply px-8 flex-shrink-0;
+    width: 18rem;
+  }
+
+  .panel-content {
+    @apply _container flex-grow;
+  }
+}

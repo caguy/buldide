@@ -49,5 +49,11 @@ module.exports = {
     40: ".4",
     80: ".8",
   },
+  screens: {
+    sm: "640px",
+    md: "768px",
+    lg: "1024px",
+    xl: "1280px",
+  },
   extend: {},
 };
