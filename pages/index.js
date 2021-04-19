@@ -1,16 +1,18 @@
+import { useSession } from "next-auth/client";
 import Head from "next/head";
 import { SITE_NAME } from "@config";
-import { useAppState } from "@context/hooks";
 
 const Home = () => {
-  const { user } = useAppState();
+  const [session, loading] = useSession();
 
   return (
     <>
       <Head>
         <title>{SITE_NAME} | Accueil</title>
       </Head>
-      {user.username ? <h1>Bonjour {user.username}</h1> : <h1>Accueil</h1>}
+      <h1>Accueil</h1>
+      {!session && <p>Vous n'êtes pas connecté</p>}
+      {session && <p>Connecté en tant que {session.user.email}</p>}
     </>
   );
 };

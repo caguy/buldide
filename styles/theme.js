@@ -11,9 +11,24 @@ module.exports = {
       light: "#EFEBFF",
       transparent: "rgba(118, 85, 254, 0.2)",
     },
+    info: {
+      DEFAULT: colors.blue[500],
+      light: colors.blue[50],
+      dark: colors.blue[900],
+    },
+    success: {
+      DEFAULT: colors.green[500],
+      light: colors.green[50],
+      dark: colors.green[900],
+    },
+    warning: {
+      DEFAULT: colors.yellow[500],
+      light: colors.yellow[50],
+      dark: colors.yellow[900],
+    },
     error: {
       DEFAULT: colors.red[500],
-      light: colors.red[100],
+      light: colors.red[50],
       dark: colors.red[900],
     },
   },

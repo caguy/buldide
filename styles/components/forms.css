@@ -8,7 +8,7 @@
   }
 
   ._input {
-    @apply w-full bg-white rounded px-4 py-2 border border-gray-600  hover:border-primary focus:border-primary focus:border-2 outline-none;
+    @apply w-full bg-white rounded px-2 py-1 border border-gray-600  hover:border-primary focus:border-primary focus:border-2 outline-none;
   }
 
   ._input:focus {

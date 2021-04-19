@@ -1,14 +1,14 @@
+import { Provider } from "next-auth/client";
 import { SiteLayout } from "@layouts";
-import { AppContextProvider } from "@context";
 import "styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AppContextProvider>
+    <Provider session={pageProps.session}>
       <SiteLayout>
         <Component {...pageProps} />
       </SiteLayout>
-    </AppContextProvider>
+    </Provider>
   );
 }
 
