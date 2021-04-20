@@ -7,7 +7,7 @@ export default function ConnexionButton() {
   if (session) {
     return (
       <button
-        className="_button-primary"
+        className="_button-primary ml-4"
         onClick={() =>
           signOut({ callbackUrl: "http://localhost:3000/deconnexion" })
         }
@@ -19,9 +19,7 @@ export default function ConnexionButton() {
     if (!loading && typeof window !== "undefined") {
       return (
         <Link href="/connexion">
-          <button className="_button-primary ml-4">
-            Connexion / inscription
-          </button>
+          <button className="_button-primary ml-4">Se connecter</button>
         </Link>
       );
     } else {

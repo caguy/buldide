@@ -1,5 +1,11 @@
 @layer components {
-  ._container {
-    @apply container mx-auto px-8;
+  @responsive {
+    ._container {
+      @apply container mx-auto px-8;
+    }
+
+    ._container-none {
+      @apply px-0 max-w-full w-full;
+    }
   }
 }

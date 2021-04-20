@@ -1,7 +1,14 @@
 @layer components {
-  ._panel-menu {
-    @apply px-8 flex-shrink-0;
-    width: 18rem;
+  @responsive {
+    ._panel-menu {
+      @apply px-8 flex-shrink-0;
+      width: 18rem;
+    }
+
+    ._panel-none {
+      @apply px-0 flex-shrink-0;
+      width: auto;
+    }
   }
 
   .panel-content {

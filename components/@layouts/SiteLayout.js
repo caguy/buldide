@@ -1,25 +1,36 @@
+import { useState } from "react";
 import Header from "@components/Header";
 import Menu from "@components/Menu";
 import SEO from "@components/SEO";
 
 const SiteLayout = ({ children }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function toggleMenu() {
+    setIsMenuOpen(!isMenuOpen);
+  }
+
   return (
     <>
       <SEO />
-      <Header />
-      <div id="mainPanel" className="flex min-h-screen">
+      <Header toggleMenu={toggleMenu} />
+      <div className="lg:flex min-h-screen">
         <div
-          id="menuPanel"
-          className="_panel-menu flex flex-col justify-between bg-grey-50 backdrop-filter blur-lg backdrop-opacity-40 backdrop-brightness-110 pt-16 pb-8 border-r border-gray-200"
+          className="_panel-menu min-h-screen absolute transform -translate-x-full lg:translate-x-0 lg:static bg-white lg:bg-transparent backdrop-filter blur-lg backdrop-opacity-40 backdrop-brightness-110 border-r border-gray-200 z-40 transition-transform"
+          style={isMenuOpen ? { transform: "translateX(0)" } : {}}
         >
-          <Menu />
-          <div className="opacity-40 text-xs">
-            © Copyright Camille Guy {new Date().getFullYear()}
-          </div>
+          <Menu toggleMenu={toggleMenu} />
         </div>
-        <main id="contentPanel" className="_container _panel-content pt-16">
+        <main className="_container-none lg:_container px-8 _panel-content pt-16 relative z-0">
           {children}
         </main>
+        {isMenuOpen && (
+          <div
+            id="overlay"
+            className="bg-white opacity-80 absolute top-0 left-0 w-screen h-screen lg:hidden z-10"
+            onClick={toggleMenu}
+          />
+        )}
       </div>
     </>
   );
