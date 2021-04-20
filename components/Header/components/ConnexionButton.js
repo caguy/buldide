@@ -6,7 +6,12 @@ export default function ConnexionButton() {
 
   if (session) {
     return (
-      <button className="_button-primary" onClick={signOut}>
+      <button
+        className="_button-primary"
+        onClick={() =>
+          signOut({ callbackUrl: "http://localhost:3000/deconnexion" })
+        }
+      >
         Déconnexion
       </button>
     );
