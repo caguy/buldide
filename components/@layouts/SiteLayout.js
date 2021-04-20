@@ -1,18 +1,12 @@
-import Head from "next/head";
 import Header from "@components/Header";
 import Menu from "@components/Menu";
-import { SITE_NAME } from "@config";
+import SEO from "@components/SEO";
 
 const SiteLayout = ({ children }) => {
   return (
     <>
-      <Head>
-        <title>{SITE_NAME}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <SEO />
       <Header />
-
       <div id="mainPanel" className="flex min-h-screen">
         <div
           id="menuPanel"

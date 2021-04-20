@@ -1,34 +1,27 @@
-import { getSession } from "next-auth/client";
-import { SITE_NAME } from "@config";
-import Head from "next/head";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/client";
 import Login from "@components/Login";
+import SEO from "@components/SEO";
 
-export default function Connexion() {
+const ConnexionPage = () => {
+  const [session, isLoading] = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    // The user is already logged in, redirect him to home page
+    if (!isLoading && session) {
+      router.replace("/");
+    }
+  }, [session, isLoading]);
+
   return (
     <>
-      <Head>
-        <title>{SITE_NAME} | Se connecter</title>
-      </Head>
+      <SEO title="Connexion" />
       <h1>Se connecter</h1>
       <Login />
     </>
   );
-}
+};
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
-
-  if (session) {
-    // The user is already logged in, redirect him to home page
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-}
+export default ConnexionPage;

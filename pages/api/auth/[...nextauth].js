@@ -8,7 +8,7 @@ export default NextAuth({
   providers: [
     Providers.Email({
       server: {
-        port: 465,
+        port: process.env.EMAIL_PROVIDER_PORT,
         host: process.env.EMAIL_PROVIDER_HOST,
         secure: true,
         auth: {
@@ -23,4 +23,5 @@ export default NextAuth({
     }),
   ],
   database: process.env.MONGO_DB_URI,
+  secret: process.env.HASH_SECRET,
 });
