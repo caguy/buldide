@@ -23,7 +23,7 @@ export default function ConnexionButton() {
         </Link>
       );
     } else {
-      return <></>;
+      return <div className="_spinner ml-4" />;
     }
   }
 }

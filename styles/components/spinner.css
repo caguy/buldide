@@ -1,0 +1,16 @@
+@layer components {
+  ._spinner {
+    @apply inline-block w-6 h-6 border-primary-light rounded-full;
+    border-top: solid 1px theme(colors.primary.DEFAULT);
+    animation: spinner 750ms linear infinite;
+  }
+
+  @keyframes spinner {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

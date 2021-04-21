@@ -43,13 +43,17 @@ export default function Login() {
                 </p>
               </div>
               <Input type="email" id="email" name="email" label="Votre email" />
-              <button
-                type="submit"
-                disabled={formik.isSubmitting}
-                className="_button-primary mt-4"
-              >
-                Connexion
-              </button>
+              <div className="flex items-center mt-4">
+                <button
+                  type="submit"
+                  disabled={formik.isSubmitting}
+                  className="_button-primary"
+                >
+                  Connexion
+                </button>
+                {formik.isSubmitting && <div className="_spinner ml-4" />}
+              </div>
+
               {error && (
                 <div className="_alert-error mt-8">
                   <p>
