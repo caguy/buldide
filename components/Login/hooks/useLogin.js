@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { signIn } from "next-auth/client";
+import { SITE_BASE_URI } from "@config";
 
-export default function useLogin() {
+export default function useLogin(redirect) {
   const [isSent, setIsSent] = useState(false);
   const [error, setError] = useState(null);
 
   const onLogin = async (values) => {
     setError(null);
+
     try {
       const { ok } = await signIn("email", {
         email: values.email,
         redirect: false,
-        callbackUrl: "/",
+        callbackUrl: redirect ? SITE_BASE_URI + redirect : "/",
       });
       if (!ok) throw new Error();
       setIsSent(true);

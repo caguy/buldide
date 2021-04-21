@@ -8,6 +8,9 @@ const ConnexionPage = () => {
   const [session, isLoading] = useSession();
   const router = useRouter();
 
+  // Will be populated if the users arrived here from a private page (see usePrivatePage)
+  const { redirect } = router.query;
+
   useEffect(() => {
     // The user is already logged in, redirect him to home page
     if (!isLoading && session) {
@@ -19,7 +22,17 @@ const ConnexionPage = () => {
     <>
       <SEO title="Connexion" />
       <h1>Se connecter</h1>
-      <Login />
+      <div className="max-w-lg">
+        {redirect && (
+          <div className="_alert-warning mb-6">
+            <p>
+              La page que vous cherchez à atteindre est réservée aux
+              utilisateurs connectés.
+            </p>
+          </div>
+        )}
+        <Login redirect={redirect} />
+      </div>
     </>
   );
 };
