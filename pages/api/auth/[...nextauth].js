@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
-import getDatabase from "utils/getDatabase";
-const User = require("@models/User");
+import getModel from "utils/getModel";
+import UserSchema from "@models/User";
 
 export default NextAuth({
   pages: {
@@ -28,7 +28,8 @@ export default NextAuth({
   secret: process.env.HASH_SECRET,
   callbacks: {
     async session(session, token) {
-      await getDatabase();
+      const User = await getModel("users", UserSchema);
+
       const user = await User.findOne(
         { email: token.email },
         "username isAdmin"

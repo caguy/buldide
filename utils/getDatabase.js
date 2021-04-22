@@ -13,7 +13,7 @@ module.exports = async function () {
 
   try {
     // Use new db connection
-    return await mongoose.connect(dbUri, {
+    return await mongoose.connect(process.env.MONGO_DB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,

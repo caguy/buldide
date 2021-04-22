@@ -4,7 +4,6 @@ module.exports = {
       ...config.resolve.alias,
       "@components": "components",
       "@config": "app.config",
-      "@context": "components/@context",
       "@helpers": "components/@helpers",
       "@layouts": "components/@layouts",
       "@models": "models",

@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
+const getDatabase = require("utils/getDatabase");
 
-module.exports = (name, schema) => {
+module.exports = async (name, schema) => {
+  const db = await getDatabase();
   let model;
   try {
-    model = mongoose.model(name);
+    model = db.model(name);
   } catch (err) {
-    model = mongoose.model(name, schema);
+    model = db.model(name, schema);
   }
   return model;
 };

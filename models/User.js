@@ -17,7 +17,6 @@ let User = new Schema(
       ],
       maxlength: [30, "Le nom d'utilisateur ne peut pas excéder 30 caractères"],
       trim: true,
-      lowercase: true,
     },
     isAdmin: {
       type: Boolean,
@@ -26,5 +25,18 @@ let User = new Schema(
   },
   { timestamps: true }
 );
+
+User.statics = {
+  findByEmail: async function (email) {
+    return await this.findOne({ email }).exec();
+  },
+};
+
+User.methods = {
+  setUsername: async function (username) {
+    this.username = username;
+    return await this.save();
+  },
+};
 
 module.exports = User;

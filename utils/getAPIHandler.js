@@ -4,5 +4,7 @@ const withGlobalMiddlewares = require("@middlewares/withGlobalMiddlewares");
 const nc = require("next-connect");
 
 module.exports = function getHandler() {
-  return withGlobalMiddlewares(nc({ onError: errors, onNoMatch: noMatch }));
+  return withGlobalMiddlewares(
+    nc({ onError: errors, onNoMatch: noMatch, attachParams: true })
+  );
 };
