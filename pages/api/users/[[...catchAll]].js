@@ -6,10 +6,10 @@ const authenticate = require("middlewares/authenticate");
 let handler = getAPIHandler();
 
 handler.post(authenticate, async (req, res, next) => {
-  const { email, username } = req.body;
+  const { email, ...attributes } = req.body;
 
   if (!email) {
-    return res._reject(400, "Email obligatoire");
+    return res._reject(400, "Utilisateur non identifié");
   }
 
   if (!(req._session.user.email === email)) {
@@ -18,7 +18,7 @@ handler.post(authenticate, async (req, res, next) => {
 
   const User = await getModel("users", UserSchema);
   let user = await User.findByEmail(email);
-  user = await user.setUsername(username);
+  await user.update(attributes);
   return res.json(user);
 });
 

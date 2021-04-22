@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let User = new Schema(
+let UserSchema = new Schema(
   {
     email: {
       type: String,
@@ -26,17 +26,10 @@ let User = new Schema(
   { timestamps: true }
 );
 
-User.statics = {
+UserSchema.statics = {
   findByEmail: async function (email) {
     return await this.findOne({ email }).exec();
   },
 };
 
-User.methods = {
-  setUsername: async function (username) {
-    this.username = username;
-    return await this.save();
-  },
-};
-
-module.exports = User;
+module.exports = UserSchema;
