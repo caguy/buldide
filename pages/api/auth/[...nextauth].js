@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
+import getDatabase from "utils/getDatabase";
+const User = require("@models/User");
 
 export default NextAuth({
   pages: {
@@ -24,4 +26,19 @@ export default NextAuth({
   ],
   database: process.env.MONGO_DB_URI,
   secret: process.env.HASH_SECRET,
+  callbacks: {
+    async session(session, token) {
+      await getDatabase();
+      const user = await User.findOne(
+        { email: token.email },
+        "username isAdmin"
+      );
+      session.user = {
+        ...session.user,
+        username: user.username,
+        isAdmin: user.isAdmin,
+      };
+      return session;
+    },
+  },
 });

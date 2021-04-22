@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <>
       <SEO title="Accueil" />
-      <h1>Accueil</h1>
+      <h1>Bonjour{session && ` ${session.user.username}`}</h1>
       {!session && <p>Vous n'êtes pas connecté</p>}
       {session && <p>Connecté en tant que {session.user.email}</p>}
     </>

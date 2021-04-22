@@ -3,6 +3,11 @@ const Schema = mongoose.Schema;
 
 let User = new Schema(
   {
+    email: {
+      type: String,
+      required: true,
+    },
+    emailVerified: Date,
     username: {
       type: String,
       required: [true, "Le nom d'utilisateur est obligatoire"],
@@ -14,28 +19,12 @@ let User = new Schema(
       trim: true,
       lowercase: true,
     },
-    password: {
-      type: String,
-      required: [true, "Le mot de passe est obligatoire"],
-      minlength: [6, "Le mot de passe doit contenir au moins 6 caractères"],
-      maxlength: [30, "Le mot de passe ne peut pas excéder 30 caractères"],
-    },
     isAdmin: {
       type: Boolean,
       default: false,
     },
-    subscriptionDate: {
-      type: Date,
-      default: Date.now,
-    },
   },
-  { strict: "throw", timestamps: true }
+  { timestamps: true }
 );
-
-User.pre("save", async function () {
-  this.password = Validator.escape(this.password);
-  this.username = Validator.escape(this.username);
-  this.password = await bcrypt.hash(this.password, 10);
-});
 
 module.exports = User;
