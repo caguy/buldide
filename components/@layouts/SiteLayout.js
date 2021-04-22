@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Header from "@components/Header";
+import Onboarding from "@components/Onboarding";
 import Menu from "@components/Menu";
 import SEO from "@components/SEO";
+import { useSession } from "next-auth/client";
 
 const SiteLayout = ({ children }) => {
+  const [session, loading] = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function toggleMenu() {
@@ -16,7 +19,7 @@ const SiteLayout = ({ children }) => {
       <Header toggleMenu={toggleMenu} />
       <div className="lg:flex min-h-screen">
         <div
-          className="_panel-menu min-h-screen absolute transform -translate-x-full lg:translate-x-0 lg:static bg-white lg:bg-transparent backdrop-filter blur-lg backdrop-opacity-40 backdrop-brightness-110 border-r border-gray-200 z-40 transition-transform"
+          className="_panel-menu min-h-screen absolute transform -translate-x-full lg:translate-x-0 lg:static bg-white lg:bg-transparent backdrop-filter blur-lg backdrop-opacity-40 backdrop-brightness-110 border-r border-gray-200 z-30 transition-transform"
           style={isMenuOpen ? { transform: "translateX(0)" } : {}}
         >
           <Menu toggleMenu={toggleMenu} />
@@ -32,6 +35,8 @@ const SiteLayout = ({ children }) => {
           />
         )}
       </div>
+
+      {session && !loading && !session.user.username && <Onboarding />}
     </>
   );
 };

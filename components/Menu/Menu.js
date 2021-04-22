@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Menu({ toggleMenu }) {
   return (
-    <div className="flex flex-col justify-between min-h-screen pt-16 pb-8 z-40">
+    <div className="flex flex-col justify-between min-h-screen pt-16 pb-8 z-30">
       <nav className="mt-16">
         <ul>
           <li className="my-4" onClick={toggleMenu}>

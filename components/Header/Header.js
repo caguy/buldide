@@ -4,7 +4,7 @@ import { SITE_NAME } from "@config";
 
 const Header = ({ toggleMenu }) => {
   return (
-    <header className="fixed top-0 w-full bg-black text-white z-50 py-2 flex items-center">
+    <header className="fixed top-0 w-full bg-black text-white z-40 py-2 flex items-center">
       <div className="_container-none lg:_container px-8 flex justify-between lg:_container-none">
         <div className="_panel-none lg:_panel-menu">
           <div
