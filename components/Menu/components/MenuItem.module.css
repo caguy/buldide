@@ -1,0 +1,13 @@
+.dot {
+  @apply absolute rounded-full bg-primary top-1/2 left-0 transform -translate-y-1/2;
+  width: 0.4em;
+  height: 0.4em;
+}
+
+.link {
+  @apply text-black text-lg font-bold hover:text-primary ml-4;
+
+  &:hover {
+    @apply no-underline;
+  }
+}

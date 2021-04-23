@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { BurgerIcon, ConnexionButton, SearchBar } from "./components";
 import { SITE_NAME } from "@config";
+import { useMenu } from "@helpers";
 
-const Header = ({ toggleMenu }) => {
+const Header = () => {
+  const { toggleMenu } = useMenu();
+
   return (
     <header className="fixed top-0 w-full bg-black text-white z-40 py-2 flex items-center">
       <div className="_container-none lg:_container px-8 flex justify-between lg:_container-none">
@@ -13,7 +16,9 @@ const Header = ({ toggleMenu }) => {
             style={{ transform: "scale(0.85)" }}
             onClick={toggleMenu}
           >
-            <BurgerIcon />
+            <button>
+              <BurgerIcon />
+            </button>
           </div>
           <div
             className="inline-block"

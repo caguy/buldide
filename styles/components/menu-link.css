@@ -1,9 +1,0 @@
-@layer components {
-  ._menu-link {
-    @apply text-black text-lg font-bold hover:text-primary;
-
-    &:hover {
-      @apply no-underline;
-    }
-  }
-}
