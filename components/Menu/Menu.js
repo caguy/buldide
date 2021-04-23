@@ -3,6 +3,7 @@ import { useMenu } from "@helpers";
 import ReactDOM from "react-dom";
 import { Flipper } from "react-flip-toolkit";
 import { useRouter } from "next/router";
+import Background from "./components/Background";
 
 export default function Menu() {
   const { pathname } = useRouter();
@@ -22,32 +23,36 @@ export default function Menu() {
   };
 
   return (
-    <div
-      className="_panel-menu min-h-screen absolute transform -translate-x-full lg:translate-x-0 lg:static bg-white lg:bg-transparent backdrop-filter blur-lg backdrop-opacity-40 backdrop-brightness-110 border-r border-gray-200 z-30 transition-transform"
-      style={isMenuOpen ? { transform: "translateX(0)" } : {}}
-    >
-      <div className="flex flex-col justify-between min-h-screen pt-16 pb-8 z-30">
-        <nav className="mt-16">
-          <ul>
-            <Flipper flipKey={pathname}>
-              <MenuItem href="/" withSeparator>
-                Accueil
-              </MenuItem>
-              <MenuItem href="/projets">Mes projets</MenuItem>
-              <MenuItem href="/contributions">Mes contributions</MenuItem>
-              <MenuItem href="/coups-de-coeur" withSeparator>
-                Mes coups de cœur
-              </MenuItem>
-              <MenuItem href="/explorer">Explorer</MenuItem>
-              <MenuItem href="/a-propos">À propos</MenuItem>
-            </Flipper>
-          </ul>
-        </nav>
-        <div className="opacity-40 text-xs">
-          © Copyright Camille Guy {new Date().getFullYear()}
+    <>
+      <div
+        className="_panel-menu min-h-screen absolute transform -translate-x-full lg:translate-x-0 lg:static bg-white lg:bg-transparent backdrop-filter blur-lg backdrop-opacity-40 backdrop-brightness-110 border-r border-gray-200 z-30 transition-transform"
+        style={isMenuOpen ? { transform: "translateX(0)" } : {}}
+      >
+        <div className="flex flex-col justify-between min-h-screen pt-16 pb-8 z-30">
+          <nav className="mt-16">
+            <ul>
+              <Flipper flipKey={pathname}>
+                <MenuItem href="/" withSeparator>
+                  Accueil
+                </MenuItem>
+                <MenuItem href="/projets">Mes projets</MenuItem>
+                <MenuItem href="/contributions">Mes contributions</MenuItem>
+                <MenuItem href="/coups-de-coeur" withSeparator>
+                  Mes coups de cœur
+                </MenuItem>
+                <MenuItem href="/explorer">Explorer</MenuItem>
+                <MenuItem href="/a-propos">À propos</MenuItem>
+              </Flipper>
+            </ul>
+          </nav>
+          <div className="opacity-40 text-xs">
+            © Copyright Camille Guy {new Date().getFullYear()}
+          </div>
         </div>
+        <Overlay />
       </div>
-      <Overlay />
-    </div>
+
+      <Background />
+    </>
   );
 }
