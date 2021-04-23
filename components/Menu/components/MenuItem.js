@@ -2,6 +2,7 @@ import { useMenu } from "@helpers";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "./MenuItem.module.css";
+import { Flipped } from "react-flip-toolkit";
 
 const MenuItem = ({ children, href, withSeparator }) => {
   const { openMenu, closeMenu } = useMenu();
@@ -11,7 +12,9 @@ const MenuItem = ({ children, href, withSeparator }) => {
     return (
       <li className="my-4">
         <div className="relative">
-          <div className={styles.dot} />
+          <Flipped flipId="dot">
+            <div className={styles.dot} />
+          </Flipped>
           <span className={`${styles.link} text-primary`}>{children}</span>
         </div>
         {withSeparator && <hr className="_separator my-6" aria-hidden />}
