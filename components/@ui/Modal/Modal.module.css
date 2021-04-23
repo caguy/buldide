@@ -1,0 +1,7 @@
+.modalMaxHeight {
+  max-height: 95vh;
+
+  @media screen and (min-height: 800px) {
+    max-height: 750px;
+  }
+}

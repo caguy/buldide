@@ -17,6 +17,7 @@ module.exports = async function () {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
+      useFindAndModify: false,
     });
   } catch (err) {
     console.error(`Failed to connect to database`);

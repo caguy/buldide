@@ -11,12 +11,19 @@ module.exports = function errorsHandler(err, req, res, next) {
     for (let error in err.errors) {
       details[error] = err.errors[error].message;
     }
-    return res._reject(400, "Données invalides", details);
+
+    return res._reject(422, "Données invalides", details);
   }
 
-  if (err.name === "StrictModeError") {
-    // Error is due to unexpected data provided
-    return res._reject(400);
+  if (err.codeName === "DuplicateKey") {
+    // Error due to duplicate value in table
+    let details = {};
+
+    for (let value in err.keyValue) {
+      details[value] = "Valeur déjà existante";
+    }
+
+    return res._reject(409, "Valeur déjà existante", details);
   }
 
   // If error is unexpected

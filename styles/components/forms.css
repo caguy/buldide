@@ -9,9 +9,9 @@
 
   ._input {
     @apply w-full bg-white rounded px-2 py-1 border border-gray-600  hover:border-primary focus:border-primary focus:border-2 outline-none;
-  }
 
-  ._input:focus {
-    margin: -1px;
+    &[disabled] {
+      @apply opacity-40;
+    }
   }
 }

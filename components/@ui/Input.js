@@ -12,7 +12,9 @@ export default function Input({ label, ...props }) {
         {...field}
         {...props}
         className={`_input ${
-          meta.error && meta.touched ? "border-error border-2" : ""
+          meta.error && meta.touched
+            ? "bg-error-light border-2 border-error hover:border-error focus:border-error"
+            : ""
         }`}
       />
       {meta.touched && meta.error ? (

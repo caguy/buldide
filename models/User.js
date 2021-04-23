@@ -6,6 +6,8 @@ let UserSchema = new Schema(
     email: {
       type: String,
       required: true,
+      immutable: true,
+      unique: true,
     },
     emailVerified: Date,
     username: {
@@ -15,8 +17,9 @@ let UserSchema = new Schema(
         4,
         "Le nom d'utilisateur doit contenir au moins 4 caractères",
       ],
-      maxlength: [30, "Le nom d'utilisateur ne peut pas excéder 30 caractères"],
+      maxlength: [10, "Le nom d'utilisateur ne peut pas excéder 30 caractères"],
       trim: true,
+      unique: true,
     },
     isAdmin: {
       type: Boolean,
@@ -27,8 +30,11 @@ let UserSchema = new Schema(
 );
 
 UserSchema.statics = {
-  findByEmail: async function (email) {
-    return await this.findOne({ email }).exec();
+  updateUserByEmail: async function (email, attributes) {
+    return await this.findOneAndUpdate({ email }, attributes, {
+      new: true,
+      runValidators: true,
+    });
   },
 };
 

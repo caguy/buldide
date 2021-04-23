@@ -1,4 +1,12 @@
 @layer base {
+  a {
+    @apply text-primary;
+
+    &:hover {
+      @apply underline;
+    }
+  }
+
   p {
     @apply my-2;
   }

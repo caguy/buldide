@@ -17,8 +17,8 @@ handler.post(authenticate, async (req, res, next) => {
   }
 
   const User = await getModel("users", UserSchema);
-  let user = await User.findByEmail(email);
-  await user.update(attributes);
+  const user = await User.updateUserByEmail(email, attributes);
+
   return res.json(user);
 });
 

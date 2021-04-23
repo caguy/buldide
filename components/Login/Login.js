@@ -24,7 +24,8 @@ export default function Login({ redirect }) {
                 <div className="text-sm">
                   <p>
                     La connexion à l'application se fait par le biais de votre
-                    adresse email.
+                    adresse email. Elle ne sert qu'à la connexion et ne sera pas
+                    visible par les autres membres.
                   </p>
                   <p>
                     <strong>Aucun mot de passe à retenir !</strong> Un lien

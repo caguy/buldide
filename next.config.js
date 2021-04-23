@@ -8,6 +8,7 @@ module.exports = {
       "@layouts": "components/@layouts",
       "@models": "models",
       "@middlewares": "middlewares",
+      "@services": "components/@services",
       "@ui": "components/@ui",
       "@utils": "utils",
     };
