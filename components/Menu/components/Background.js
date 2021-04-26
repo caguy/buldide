@@ -1,15 +1,15 @@
-import { useMenu } from "@helpers";
 import { useRef, useEffect } from "react";
 
 const param = {
   BUBBLE_MIN_SIZE: 10,
-  BUBBLE_MAX_SIZE: 60,
-  BUBBLE_PROBABILITY: 1 / 1000,
-  BUBBLE_MIN_SPEED: 0.01,
-  BUBBLE_MAX_SPEED: 0.3,
+  BUBBLE_MAX_SIZE: 50,
+  BUBBLE_PROBABILITY: 1 / 1500,
+  BUBBLE_MIN_SPEED: 0.02,
+  BUBBLE_MAX_SPEED: 0.15,
   BUBBLE_COLOR: "#7655FE",
   BUBBLE_LINE_WIDTH: 5,
   BUBBLE_FILL_PROBABILITY: 0.3,
+  BUBBLE_DENSITY: 150,
   OPACITY: 0.3,
   BLUR: 5,
 };
@@ -20,12 +20,12 @@ function random(min, max) {
 
 const Background = () => {
   const canvasRef = useRef();
-  const { isMenuOpen } = useMenu();
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const bubbleArray = [];
+    let raf = null;
 
     class Bubble {
       constructor({ init = false } = {}) {
@@ -65,7 +65,11 @@ const Background = () => {
 
     function init() {
       resize();
-      for (let i = 0, max = canvas.height / 200; i < max; i++) {
+      for (
+        let i = 0, max = canvas.height / param.BUBBLE_DENSITY;
+        i < max;
+        i++
+      ) {
         bubbleArray.push(new Bubble({ init: true }));
       }
     }
@@ -79,7 +83,10 @@ const Background = () => {
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      if (Math.random() < param.BUBBLE_PROBABILITY) {
+      if (
+        bubbleArray.length < canvas.height / param.BUBBLE_DENSITY &&
+        Math.random() < param.BUBBLE_PROBABILITY
+      ) {
         bubbleArray.push(new Bubble());
       }
 
@@ -87,19 +94,28 @@ const Background = () => {
         bubbleArray[i].update();
         bubbleArray[i].draw();
 
-        if (bubbleArray[i].position.y + bubbleArray[i].radius < 0) {
+        if (
+          bubbleArray[i].position.y + bubbleArray[i].radius < 0 ||
+          bubbleArray[i].position.y > canvas.height + bubbleArray[i].radius
+        ) {
           bubbleArray.splice(i, 1);
           i--;
           length--;
         }
       }
 
-      requestAnimationFrame(animate);
+      raf = requestAnimationFrame(animate);
     }
 
     init();
     window.addEventListener("resize", resize);
     animate();
+
+    return () => {
+      console.log("returned");
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
 
   return (

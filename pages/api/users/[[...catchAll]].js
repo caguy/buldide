@@ -5,7 +5,7 @@ const authenticate = require("middlewares/authenticate");
 
 let handler = getAPIHandler();
 
-handler.post(authenticate, async (req, res, next) => {
+handler.put(authenticate, async (req, res, next) => {
   const { email, ...attributes } = req.body;
 
   if (!email) {
