@@ -1,6 +1,6 @@
 @layer components {
   ._field {
-    @apply my-6;
+    @apply my-8;
   }
 
   ._label {

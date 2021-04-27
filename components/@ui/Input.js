@@ -1,6 +1,15 @@
 import { useField } from "formik";
 
-export default function Input({ label, ...props }) {
+const InputElt = (props) => {
+  switch (props.type) {
+    case "textarea":
+      return <textarea rows="5" {...props} />;
+    default:
+      return <input {...props} />;
+  }
+};
+
+const Input = ({ label, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
@@ -8,7 +17,7 @@ export default function Input({ label, ...props }) {
       <label htmlFor={props.id} className="_label">
         {label}
       </label>
-      <input
+      <InputElt
         {...field}
         {...props}
         className={`_input ${
@@ -22,4 +31,6 @@ export default function Input({ label, ...props }) {
       ) : null}
     </div>
   );
-}
+};
+
+export default Input;

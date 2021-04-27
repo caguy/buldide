@@ -6,9 +6,11 @@ import { Flipped } from "react-flip-toolkit";
 
 const MenuItem = ({ children, href, withSeparator }) => {
   const { openMenu, closeMenu } = useMenu();
-  const { pathname } = useRouter();
+  const { query, pathname } = useRouter();
 
-  if (pathname === href) {
+  let currentSection = query.redirect || "/" + pathname.split("/")[1];
+
+  if (currentSection === href) {
     return (
       <li className="my-4">
         <div className="relative">

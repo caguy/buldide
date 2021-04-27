@@ -25,10 +25,7 @@ const ConnexionPage = () => {
       <div className="max-w-lg">
         {redirect && (
           <div className="_alert-warning mb-6">
-            <p>
-              La page que vous cherchez à atteindre est réservée aux
-              utilisateurs connectés.
-            </p>
+            <p>Cette page est réservée aux utilisateurs connectés.</p>
           </div>
         )}
         <Login redirect={redirect} />
